@@ -9,7 +9,8 @@
     "server": "yarn run json-graphql-server ../server/db.js -p 3001",
     "lint": "next lint",
     "codegen": "graphql-codegen --config codegen.ts",
-    "postinstall": "yarn run codegen"
+    "postinstall": "yarn run codegen",
+    "test": "jest"
   },
   "dependencies": {
     "@apollo/client": "^3.13.8",
