@@ -1,7 +1,7 @@
 import { render, fireEvent } from "@testing-library/react";
-import Product from "../pages/product";
+import Product from "../../client-old/pages/product";
 
-test("should be able to increase and decrease product quantity", async () => {
+it("should be able to increase and decrease product quantity", async () => {
   const { getByText, getByTitle } = render(<Product />);
 
   const increaseQuantity = getByText("+");
@@ -18,7 +18,7 @@ test("should be able to increase and decrease product quantity", async () => {
   expect(currentQuantity).toHaveTextContent("1");
 });
 
-test("should be able to add items to the basket", async () => {
+it("should be able to add items to the basket", async () => {
   const { getByText, getByTitle } = render(<Product />);
 
   const increaseQuantity = getByText("+");
