@@ -1,5 +1,8 @@
 import type { Metadata } from 'next'
 import '@/styles/globals.css'
+import ContentLayout from '@/components/layouts/content-layout'
+import Footer from '@/features/footer/components/footer'
+import Header from '@/features/header/components/header'
 
 export const metadata: Metadata = {
   title: 'Kraken Code Test',
@@ -26,7 +29,11 @@ const RootLayout = ({
           sizes="32x32"
         ></link>
       </head>
-      <body className="antialiased">{children}</body>
+      <body className="antialiased min-h-screen flex flex-col">
+        <Header />
+        <ContentLayout className="flex-1">{children}</ContentLayout>
+        <Footer />
+      </body>
     </html>
   )
 }

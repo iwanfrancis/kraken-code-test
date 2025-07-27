@@ -1,4 +1,14 @@
-/* Octopus Energy brand colours used in the design */
+@import 'tailwindcss';
+
+@theme {
+  --color-hemocyanin: #180048;
+  --color-ice: #f0ffff;
+  --color-plum: #600e6b;
+  --color-purple-haze: #a49fc8;
+  --color-siphon: #100030;
+  --color-soho-lights: #f050f8;
+}
+
 :root {
   --hemocyanin: #180048;
   --ice: #f0ffff;
