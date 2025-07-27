@@ -1,0 +1,135 @@
+type ListMetadata {
+  count: Int
+}
+
+type Mutation {
+  createManyProduct(data: [ProductInput]): [Product]
+  createProduct(brand: String!, colour: String!, description: String!, height: Float!, img_url: String!, length: Float!, model_code: String!, name: String!, power: String!, price: Int!, quantity: Int!, weight: Int!, width: Float!): Product
+  deleteProduct(id: ID!): Product
+  removeProduct(id: ID!): Product
+  updateProduct(brand: String, colour: String, description: String, height: Float, id: ID!, img_url: String, length: Float, model_code: String, name: String, power: String, price: Int, quantity: Int, weight: Int, width: Float): Product
+}
+
+type Product {
+  brand: String!
+  colour: String!
+  description: String!
+  height: Float!
+  id: ID!
+  img_url: String!
+  length: Float!
+  model_code: String!
+  name: String!
+  power: String!
+  price: Int!
+  quantity: Int!
+  weight: Int!
+  width: Float!
+}
+
+input ProductFilter {
+  brand: String
+  brand_gt: String
+  brand_gte: String
+  brand_lt: String
+  brand_lte: String
+  brand_neq: String
+  colour: String
+  colour_gt: String
+  colour_gte: String
+  colour_lt: String
+  colour_lte: String
+  colour_neq: String
+  description: String
+  description_gt: String
+  description_gte: String
+  description_lt: String
+  description_lte: String
+  description_neq: String
+  height: Float
+  height_gt: Float
+  height_gte: Float
+  height_lt: Float
+  height_lte: Float
+  height_neq: Float
+  id: ID
+  id_neq: ID
+  ids: [ID]
+  img_url: String
+  img_url_gt: String
+  img_url_gte: String
+  img_url_lt: String
+  img_url_lte: String
+  img_url_neq: String
+  length: Float
+  length_gt: Float
+  length_gte: Float
+  length_lt: Float
+  length_lte: Float
+  length_neq: Float
+  model_code: String
+  model_code_gt: String
+  model_code_gte: String
+  model_code_lt: String
+  model_code_lte: String
+  model_code_neq: String
+  name: String
+  name_gt: String
+  name_gte: String
+  name_lt: String
+  name_lte: String
+  name_neq: String
+  power: String
+  power_gt: String
+  power_gte: String
+  power_lt: String
+  power_lte: String
+  power_neq: String
+  price: Int
+  price_gt: Int
+  price_gte: Int
+  price_lt: Int
+  price_lte: Int
+  price_neq: Int
+  q: String
+  quantity: Int
+  quantity_gt: Int
+  quantity_gte: Int
+  quantity_lt: Int
+  quantity_lte: Int
+  quantity_neq: Int
+  weight: Int
+  weight_gt: Int
+  weight_gte: Int
+  weight_lt: Int
+  weight_lte: Int
+  weight_neq: Int
+  width: Float
+  width_gt: Float
+  width_gte: Float
+  width_lt: Float
+  width_lte: Float
+  width_neq: Float
+}
+
+input ProductInput {
+  brand: String!
+  colour: String!
+  description: String!
+  height: Float!
+  img_url: String!
+  length: Float!
+  model_code: String!
+  name: String!
+  power: String!
+  price: Int!
+  quantity: Int!
+  weight: Int!
+  width: Float!
+}
+
+type Query {
+  Product(id: ID!): Product
+  _allProductsMeta(filter: ProductFilter, page: Int, perPage: Int): ListMetadata
+  allProducts(filter: ProductFilter, page: Int, perPage: Int, sortField: String, sortOrder: String): [Product]
+}
