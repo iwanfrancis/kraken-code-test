@@ -14,8 +14,8 @@ const ProductDescription = (props: ProductSpecificationsProps) => {
   const product = useFragment(ProductDescriptionFragment, props.product)
 
   return (
-    <div>
-      <h2>Description</h2>
+    <div className="bg-hemocyanin p-4">
+      <h2 className="text-2xl mb-4">Description</h2>
       <p>{product.description}</p>
     </div>
   )
