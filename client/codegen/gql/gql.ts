@@ -14,10 +14,16 @@ import { TypedDocumentNode as DocumentNode } from '@graphql-typed-document-node/
  * Learn more about it here: https://the-guild.dev/graphql/codegen/plugins/presets/preset-client#reducing-bundle-size
  */
 type Documents = {
-    "\n  query productQuery($productId: ID!) {\n    Product(id: $productId) {\n      id\n      name\n    }\n  }\n": typeof types.ProductQueryDocument,
+    "\n  query productQuery($productId: ID!) {\n    Product(id: $productId) {\n      ...ProductOverview\n      ...ProductDescription\n      ...ProductSpecifications\n    }\n  }\n": typeof types.ProductQueryDocument,
+    "\n  fragment ProductDescription on Product {\n    description\n  }\n": typeof types.ProductDescriptionFragmentDoc,
+    "\n  fragment ProductOverview on Product {\n    name\n    power\n    quantity\n    price\n    img_url\n  }\n": typeof types.ProductOverviewFragmentDoc,
+    "\n  fragment ProductSpecifications on Product {\n    brand\n    weight\n    width\n    height\n    length\n    model_code\n    colour\n  }\n": typeof types.ProductSpecificationsFragmentDoc,
 };
 const documents: Documents = {
-    "\n  query productQuery($productId: ID!) {\n    Product(id: $productId) {\n      id\n      name\n    }\n  }\n": types.ProductQueryDocument,
+    "\n  query productQuery($productId: ID!) {\n    Product(id: $productId) {\n      ...ProductOverview\n      ...ProductDescription\n      ...ProductSpecifications\n    }\n  }\n": types.ProductQueryDocument,
+    "\n  fragment ProductDescription on Product {\n    description\n  }\n": types.ProductDescriptionFragmentDoc,
+    "\n  fragment ProductOverview on Product {\n    name\n    power\n    quantity\n    price\n    img_url\n  }\n": types.ProductOverviewFragmentDoc,
+    "\n  fragment ProductSpecifications on Product {\n    brand\n    weight\n    width\n    height\n    length\n    model_code\n    colour\n  }\n": types.ProductSpecificationsFragmentDoc,
 };
 
 /**
@@ -37,7 +43,19 @@ export function graphql(source: string): unknown;
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
-export function graphql(source: "\n  query productQuery($productId: ID!) {\n    Product(id: $productId) {\n      id\n      name\n    }\n  }\n"): (typeof documents)["\n  query productQuery($productId: ID!) {\n    Product(id: $productId) {\n      id\n      name\n    }\n  }\n"];
+export function graphql(source: "\n  query productQuery($productId: ID!) {\n    Product(id: $productId) {\n      ...ProductOverview\n      ...ProductDescription\n      ...ProductSpecifications\n    }\n  }\n"): (typeof documents)["\n  query productQuery($productId: ID!) {\n    Product(id: $productId) {\n      ...ProductOverview\n      ...ProductDescription\n      ...ProductSpecifications\n    }\n  }\n"];
+/**
+ * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function graphql(source: "\n  fragment ProductDescription on Product {\n    description\n  }\n"): (typeof documents)["\n  fragment ProductDescription on Product {\n    description\n  }\n"];
+/**
+ * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function graphql(source: "\n  fragment ProductOverview on Product {\n    name\n    power\n    quantity\n    price\n    img_url\n  }\n"): (typeof documents)["\n  fragment ProductOverview on Product {\n    name\n    power\n    quantity\n    price\n    img_url\n  }\n"];
+/**
+ * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function graphql(source: "\n  fragment ProductSpecifications on Product {\n    brand\n    weight\n    width\n    height\n    length\n    model_code\n    colour\n  }\n"): (typeof documents)["\n  fragment ProductSpecifications on Product {\n    brand\n    weight\n    width\n    height\n    length\n    model_code\n    colour\n  }\n"];
 
 export function graphql(source: string) {
   return (documents as any)[source] ?? {};

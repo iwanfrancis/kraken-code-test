@@ -15,8 +15,7 @@ module.exports = {
       length: 6.2,
       model_code: "E27 ES",
       colour: "Cool daylight",
-      img_url: "https://i.ibb.co/2nzwxnQ/bulb.png",
+      img_url: "/philips-plumen.jpg",
     },
   ],
 };
-

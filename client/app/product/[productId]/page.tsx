@@ -1,20 +1,26 @@
-import { graphql } from '@/codegen/gql'
+import { getProduct } from '@/features/product/api/get-product'
+import ProductDescription from '@/features/product/components/product-description'
+import ProductOverview from '@/features/product/components/product-overview'
+import ProductSpecifications from '@/features/product/components/product-specifications'
+import { notFound } from 'next/navigation'
 
 type ProductPageProps = { params: Promise<{ productId: string }> }
 
-const productQueryDocument = graphql(`
-  query productQuery($productId: ID!) {
-    Product(id: $productId) {
-      id
-      name
-    }
-  }
-`)
-
 const ProductPage = async ({ params }: ProductPageProps) => {
   const { productId } = await params
+  const product = await getProduct(productId)
 
-  return <div>Product page</div>
+  if (!product) {
+    return notFound()
+  }
+
+  return (
+    <>
+      <ProductOverview product={product} />
+      <ProductDescription product={product} />
+      <ProductSpecifications product={product} />
+    </>
+  )
 }
 
 export default ProductPage
