@@ -1,15 +1,15 @@
-import type { Metadata } from "next";
-import "@/styles/globals.css";
+import type { Metadata } from 'next'
+import '@/styles/globals.css'
 
 export const metadata: Metadata = {
-  title: "Kraken Code Test",
-  description: "A frontend code test for Kraken",
-};
+  title: 'Kraken Code Test',
+  description: 'A frontend code test for Kraken',
+}
 
 const RootLayout = ({
   children,
 }: Readonly<{
-  children: React.ReactNode;
+  children: React.ReactNode
 }>) => {
   return (
     <html lang="en">
@@ -28,7 +28,7 @@ const RootLayout = ({
       </head>
       <body className="antialiased">{children}</body>
     </html>
-  );
-};
+  )
+}
 
-export default RootLayout;
+export default RootLayout
