@@ -15,3 +15,7 @@
   - For the project structure, I'm loosely following [bulletproof react](https://github.com/alan2207/bulletproof-react) structure, which I find to be a really tidy way to structure projects.
 - Setup the 'Add to cart' form
   - Not actually performing an operation yet. I'd like to see if I can get it doing a graphql mutation rather than just updating some global context for the basket icon.
+- Setup header and footer with styling
+  - Included a layout component for centering content and adding consident margins
+  - Setup a cn function for easier tailwind classname handling
+- Add styling for the rest of the product page
