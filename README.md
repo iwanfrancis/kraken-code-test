@@ -1,4 +1,4 @@
-# Solution to Octopus Frontend Code Test
+# Solution to Kraken Frontend Code Test
 
 ## TLDR
 
