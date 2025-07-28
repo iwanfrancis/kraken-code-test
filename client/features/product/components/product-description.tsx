@@ -15,8 +15,8 @@ const ProductDescription = (props: ProductSpecificationsProps) => {
 
   return (
     <div className="bg-hemocyanin p-4">
-      <h2 className="text-2xl mb-4">Description</h2>
-      <p>{product.description}</p>
+      <h2 className="text-2xl mb-4 font-medium">Description</h2>
+      <p className="font-light">{product.description}</p>
     </div>
   )
 }

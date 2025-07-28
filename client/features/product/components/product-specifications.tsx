@@ -16,16 +16,16 @@ type ProductSpecificationsProps = {
   product: FragmentType<typeof ProductSpecificationsFragment>
 }
 
-const thClassName = 'font-normal'
-const tdClassName = 'font-normal'
+const thClassName = 'font-light'
+const tdClassName = 'font-light'
 
 const ProductSpecifications = (props: ProductSpecificationsProps) => {
   const product = useFragment(ProductSpecificationsFragment, props.product)
 
   return (
     <div className="bg-siphon p-4">
-      <h2 className="text-2xl mb-4">Specifications</h2>
-      <table className="border-separate border-spacing-4 text-sm text-left font-normal -m-4 w-full">
+      <h2 className="text-2xl mb-4 font-medium">Specifications</h2>
+      <table className="border-separate border-spacing-4 text-sm text-left -m-4 w-full">
         <tbody>
           <tr>
             <th className={thClassName}>Brand</th>

@@ -7,7 +7,7 @@ type ContentLayoutProps = {
 }
 
 const ContentLayout = ({ className, children }: ContentLayoutProps) => (
-  <div className={cn('mx-auto max-w-7xl', className)}>{children}</div>
+  <div className={cn('mx-auto max-w-5xl', className)}>{children}</div>
 )
 
 export default ContentLayout

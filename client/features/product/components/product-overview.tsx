@@ -61,12 +61,12 @@ const ProductOverview = (props: ProductOverviewProps) => {
         />
       </div>
       <h1 className="text-4xl mb-4">{product.name}</h1>
-      <span className="text-purple-haze font-semibold mb-4 block">
+      <span className="text-purple-haze font-medium mb-4 block">
         {`${product.power} // Packet of ${product.quantity}`}
       </span>
       <form onSubmit={handleAddToCart}>
         <div className="flex justify-between mb-5 items-end">
-          <data aria-label="Price" className="text-2xl font-semibold">
+          <data aria-label="Price" className="text-2xl font-medium">
             {formatPriceGBP(product.price)}
           </data>
           <div className="flex flex-col">
