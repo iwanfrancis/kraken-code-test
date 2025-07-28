@@ -71,3 +71,8 @@ These are notes that I've taken as I went through the test. Hopefully they shoul
   - I didn't implement any incremental static revalidation on the site as it would have meant that the server would need to be running during build, which is a bit tedious for such a simple site.
   - Instead the page is SSR-on-request.
   - This would simply be a case of creating a getAllProduct api query and then adding a generateStaticParams function to the product page which gets all the ids.
+- More linter rules
+  - I left the default ESLint rules, but I would typically have set up some extra rules for better code quality
+- IDE support for GraphQL codegen
+  - [GraphQLSP](https://github.com/0no-co/GraphQLSP?tab=readme-ov-file) is a tool which works well with GraphQL Codegen, as it gives you hover tips and auto complete when writing GraphQL queries and fragments. I tried to get it setup but was having workspace issues. I think it's because the project isn't sitting at the root of the VScode workspace.
+  - I also wanted to get the watcher setup for GraphQL codegen so that types are automated regenerated when they are tweaked in the code. Again, I was habving problems with this in my workspace. I'm currently working on a windows machine in WSL, so it could have been related to that.
