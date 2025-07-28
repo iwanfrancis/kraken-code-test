@@ -2,7 +2,7 @@ import { graphql } from '@/codegen/gql'
 import { query } from '@/lib/api-client'
 
 const productQueryDocument = graphql(`
-  query productQuery($productId: ID!) {
+  query product($productId: ID!) {
     Product(id: $productId) {
       ...ProductOverview
       ...ProductDescription

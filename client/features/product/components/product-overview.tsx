@@ -70,11 +70,7 @@ const ProductOverview = (props: ProductOverviewProps) => {
             {formatPriceGBP(product.price)}
           </data>
           <div className="flex flex-col">
-            <label
-              htmlFor="quantity"
-              aria-label="Current quantity"
-              className="text-center text-2xs"
-            >
+            <label htmlFor="quantity" className="text-center text-2xs">
               Qty
             </label>
             <div className="items-center flex">
@@ -91,6 +87,7 @@ const ProductOverview = (props: ProductOverviewProps) => {
               <input
                 id="quantity"
                 type="number"
+                title="Current quantity"
                 readOnly
                 value={quantity}
                 className="w-8 text-center text-2xl font-semibold pointer-events-none arrow-hide"
