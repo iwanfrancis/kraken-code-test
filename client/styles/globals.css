@@ -7,6 +7,19 @@
   --color-purple-haze: #a49fc8;
   --color-siphon: #100030;
   --color-soho-lights: #f050f8;
+
+  --text-2xs: 0.625rem;
+}
+
+@utility arrow-hide {
+  &::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+  &::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
 }
 
 :root {

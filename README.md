@@ -2,6 +2,8 @@
 
 ## My Process
 
+- I am pretending that this is a codebase that I want to continue expanding and so am trying to make decision that will keep the codebase scalable.
+  - This includes setting up folder structures and using libraries that may seem overkill given the scope of the test.
 - Swapped out the Next.js v12 template provided with Next.js 15 app router
   - I was keen to replace the Next.js version with something a little more recent and also to switch to app router, as that's what I've been using recently and so am more familiar with.
 - Added [prettier](https://prettier.io/) for consistent code formatting
@@ -19,3 +21,7 @@
   - Included a layout component for centering content and adding consident margins
   - Setup a cn function for easier tailwind classname handling
 - Add styling for the rest of the product page
+- Setup button component
+  - Decided to use [CVA](https://cva.style/docs), even though the button has very few variant. This would make it extremely easy to spin up new variants of the button.
+  - For base components I have been experimenting with using [shadcn](https://ui.shadcn.com/) as a base point. In this case I took the shadcn button but stripped it back a bit as it was a little _too_ overkill in this scenario.
+  - I don't like re-inventing wheels, so component libraries are a big win for quick development and accessibility. I like the idea of shadcn a lot as the whole idea is that you copy the code into your project instead of installing a library with lots of components at once. You just take what you need.

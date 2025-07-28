@@ -1,12 +1,13 @@
 'use client'
 
 import { FragmentType, graphql, useFragment } from '@/codegen/gql'
+import { Button } from '@/components/ui/button/button'
 import { formatPriceGBP } from '@/utils/price'
 import Image from 'next/image'
 import { useState } from 'react'
 
 const MINIMUM_QUANTITY = 1
-const MAXIMUM_QUANTITY = 10
+const MAXIMUM_QUANTITY = 9
 
 const ProductOverviewFragment = graphql(`
   fragment ProductOverview on Product {
@@ -44,43 +45,66 @@ const ProductOverview = (props: ProductOverviewProps) => {
   }
 
   return (
-    <div>
-      <Image
-        src={product.img_url}
-        alt={product.name}
-        width={500}
-        height={500}
-      />
-      <h1>{product.name}</h1>
-      <p>{product.power} W</p>
-      <p>Packet of {product.quantity}</p>
+    <div className="p-4">
+      <div className="relative w-full max-w-lg aspect-square rounded-2xl overflow-hidden mx-auto mb-4">
+        <Image
+          src={product.img_url}
+          alt={product.name}
+          fill={true}
+          sizes="(max-width: 768px) 100vw, 640px"
+        />
+      </div>
+      <h1 className="text-4xl mb-4">{product.name}</h1>
+      <span className="text-purple-haze font-semibold mb-4 block">
+        {`${product.power} // Packet of ${product.quantity}`}
+      </span>
       <form>
-        <span>{formatPriceGBP(product.price)}</span>
-        <label htmlFor="quantity" aria-label="Quantity">
-          Qty
-        </label>
-        <button
-          type="button"
-          onClick={handleQuantityDecrement}
-          disabled={quantityIsAtMinimum}
-          aria-label="Decrease quantity"
-          aria-controls="quantity"
-        >
-          -
-        </button>
-        <input id="quantity" type="number" readOnly value={quantity} />
-        <button
-          type="button"
-          onClick={handleQuantityIncrement}
-          disabled={quantityIsAtMaximum}
-          aria-label="Increase quantity"
-          aria-controls="quantity"
-        >
-          +
-        </button>
-        <button type="submit" onClick={handleAddToCart}>
-          Add to Cart
-        </button>
+        <div className="flex justify-between mb-5 items-end">
+          <data aria-label="Price" className="text-2xl font-semibold">
+            {formatPriceGBP(product.price)}
+          </data>
+          <div className="flex flex-col">
+            <label
+              htmlFor="quantity"
+              aria-label="Quantity"
+              className="text-center text-2xs"
+            >
+              Qty
+            </label>
+            <div className="items-center flex">
+              <Button
+                type="button"
+                size="icon"
+                onClick={handleQuantityDecrement}
+                disabled={quantityIsAtMinimum}
+                aria-label="Decrease quantity"
+                aria-controls="quantity"
+              >
+                -
+              </Button>
+              <input
+                id="quantity"
+                type="number"
+                readOnly
+                value={quantity}
+                className="w-8 text-center text-2xl font-semibold pointer-events-none arrow-hide"
+              />
+              <Button
+                type="button"
+                size="icon"
+                onClick={handleQuantityIncrement}
+                disabled={quantityIsAtMaximum}
+                aria-label="Increase quantity"
+                aria-controls="quantity"
+              >
+                +
+              </Button>
+            </div>
+          </div>
+        </div>
+        <Button type="submit" onClick={handleAddToCart} className="w-full">
+          Add to cart
+        </Button>
       </form>
     </div>
   )
