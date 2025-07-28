@@ -67,3 +67,7 @@ These are notes that I've taken as I went through the test. Hopefully they shoul
 - i18n
   - I baked all of the copy into the component for speed but in a real project I would definitey have set up some intl like [next-intl](https://next-intl.dev/). Even if no localisation is needed, it's far nicer to have the copy seperated from the components.
   - Based on the last time i set up next-intl it was a bit of a tedious process so I opted not to in this case.
+- ISR
+  - I didn't implement any incremental static revalidation on the site as it would have meant that the server would need to be running during build, which is a bit tedious for such a simple site.
+  - Instead the page is SSR-on-request.
+  - This would simply be a case of creating a getAllProduct api query and then adding a generateStaticParams function to the product page which gets all the ids.
