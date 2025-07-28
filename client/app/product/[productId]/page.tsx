@@ -12,7 +12,11 @@ const ProductPage = async ({ params }: ProductPageProps) => {
     return notFound()
   }
 
-  return <Product product={product} />
+  return (
+    <main>
+      <Product product={product} />
+    </main>
+  )
 }
 
 export default ProductPage

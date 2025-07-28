@@ -15,6 +15,13 @@ export const getProduct = async (productId: string) => {
   const { data } = await query({
     query: productQueryDocument,
     variables: { productId },
+    context: {
+      fetchOptions: {
+        next: {
+          revalidate: 60,
+        },
+      },
+    },
   })
 
   return data.Product
