@@ -1,4 +1,5 @@
 import ContentLayout from '@/components/layouts/content-layout'
+import CartIcon from '@/features/cart/components/cart-icon'
 import Image from 'next/image'
 
 const Header = () => {
@@ -8,7 +9,7 @@ const Header = () => {
         <div className="w-1/2 max-w-80 relative h-12">
           <Image src="/octopus-logo.svg" alt="Logo" fill={true} />
         </div>
-        <Image src="/basket.svg" alt="Basket" width={24} height={24} />
+        <CartIcon />
       </ContentLayout>
     </header>
   )

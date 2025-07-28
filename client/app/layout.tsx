@@ -3,6 +3,7 @@ import '@/styles/globals.css'
 import ContentLayout from '@/components/layouts/content-layout'
 import Footer from '@/features/footer/components/footer'
 import Header from '@/features/header/components/header'
+import { CartProvider } from '@/features/cart/stores/cart-provider'
 
 export const metadata: Metadata = {
   title: 'Kraken Code Test',
@@ -30,9 +31,11 @@ const RootLayout = ({
         ></link>
       </head>
       <body className="antialiased min-h-screen flex flex-col">
-        <Header />
-        <ContentLayout className="flex-1">{children}</ContentLayout>
-        <Footer />
+        <CartProvider>
+          <Header />
+          <ContentLayout className="flex-1">{children}</ContentLayout>
+          <Footer />
+        </CartProvider>
       </body>
     </html>
   )

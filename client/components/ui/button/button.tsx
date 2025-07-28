@@ -21,12 +21,11 @@ const buttonVariants = cva(
     },
   }
 )
-function Button({
-  className,
-  variant,
-  size,
-  ...props
-}: React.ComponentProps<'button'> & VariantProps<typeof buttonVariants>) {
+
+type ButtonProps = React.ComponentProps<'button'> &
+  VariantProps<typeof buttonVariants>
+
+const Button = ({ className, variant, size, ...props }: ButtonProps) => {
   return (
     <button
       className={cn([

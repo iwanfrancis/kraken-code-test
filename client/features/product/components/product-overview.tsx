@@ -2,6 +2,7 @@
 
 import { FragmentType, graphql, useFragment } from '@/codegen/gql'
 import { Button } from '@/components/ui/button/button'
+import { useCart } from '@/features/cart/stores/cart-provider'
 import { formatPriceGBP } from '@/utils/price'
 import Image from 'next/image'
 import { useState } from 'react'
@@ -11,6 +12,7 @@ const MAXIMUM_QUANTITY = 9
 
 const ProductOverviewFragment = graphql(`
   fragment ProductOverview on Product {
+    id
     name
     power
     quantity
@@ -26,6 +28,7 @@ type ProductOverviewProps = {
 const ProductOverview = (props: ProductOverviewProps) => {
   const product = useFragment(ProductOverviewFragment, props.product)
   const [quantity, setQuantity] = useState(MINIMUM_QUANTITY)
+  const { addItem } = useCart()
 
   const quantityIsAtMinimum = quantity <= MINIMUM_QUANTITY
   const quantityIsAtMaximum = quantity >= MAXIMUM_QUANTITY
@@ -40,8 +43,11 @@ const ProductOverview = (props: ProductOverviewProps) => {
 
   const handleAddToCart = (event: React.FormEvent) => {
     event.preventDefault()
-    // Add to cart logic. Need to decide whether to just do state or a mutation
-    console.log(`Adding ${quantity} of ${product.name} to cart.`)
+    addItem({
+      id: product.id,
+      name: product.name,
+      quantity: quantity,
+    })
   }
 
   return (
@@ -58,7 +64,7 @@ const ProductOverview = (props: ProductOverviewProps) => {
       <span className="text-purple-haze font-semibold mb-4 block">
         {`${product.power} // Packet of ${product.quantity}`}
       </span>
-      <form>
+      <form onSubmit={handleAddToCart}>
         <div className="flex justify-between mb-5 items-end">
           <data aria-label="Price" className="text-2xl font-semibold">
             {formatPriceGBP(product.price)}
@@ -66,7 +72,7 @@ const ProductOverview = (props: ProductOverviewProps) => {
           <div className="flex flex-col">
             <label
               htmlFor="quantity"
-              aria-label="Quantity"
+              aria-label="Current quantity"
               className="text-center text-2xs"
             >
               Qty
@@ -102,7 +108,7 @@ const ProductOverview = (props: ProductOverviewProps) => {
             </div>
           </div>
         </div>
-        <Button type="submit" onClick={handleAddToCart} className="w-full">
+        <Button type="submit" className="w-full">
           Add to cart
         </Button>
       </form>
